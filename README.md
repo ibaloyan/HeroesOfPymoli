@@ -1,9 +1,17 @@
-# HeroesOfPymoli
+# Pandas-HeroesOfPymoli
 Inna Baloyan's Heroes Of Pymoli Game Data Analysis using Pandas Library and Jupyter Notebook
 
-I. Out of 780 active players, the vast majority are male (84%). There also exists, a smaller, but notable proportion of female players (14%).
-II. Our peak age demographic falls between 20-24 (46.8%) with secondary groups falling between 15-19 (17.4%) and 25-29 (13%).
 
+### Heroes Of Pymoli Data Analysis
+
+* Of the 780 active players, the vast majority are male (84%). There also exists, a smaller, but notable proportion of female players (14%).
+
+* Our peak age demographic falls between 20-24 (46.8%) with secondary groups falling between 15-19 (17.4%) and 25-29 (13%).  
+
+-----
+
+
+```python
 # Dependencies and Setup
 import pandas as pd
 import numpy as np
@@ -15,72 +23,128 @@ file_to_load = "Resources/purchase_data.csv"
 purchase_data = pd.read_csv(file_to_load)
 purchase_data_df = pd.DataFrame(purchase_data)
 purchase_data_df.head()
-Out[1]:
+```
 
-Purchase ID
-SN
-Age
-Gender
-Item ID
-Item Name
-Price
-0
-0
-Lisim78
-20
-Male
-108
-Extraction, Quickblade Of Trembling Hands
-3.53
-1
-1
-Lisovynya38
-40
-Male
-143
-Frenzied Scimitar
-1.56
-2
-2
-Ithergue48
-24
-Male
-92
-Final Critic
-4.88
-3
-3
-Chamassasya86
-24
-Male
-100
-Blindscythe
-3.27
-4
-4
-Iskosia90
-23
-Male
-131
-Fury
-1.44
 
-Player Count
 
-Display the total number of players
 
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Purchase ID</th>
+      <th>SN</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Lisim78</td>
+      <td>20</td>
+      <td>Male</td>
+      <td>108</td>
+      <td>Extraction, Quickblade Of Trembling Hands</td>
+      <td>3.53</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Lisovynya38</td>
+      <td>40</td>
+      <td>Male</td>
+      <td>143</td>
+      <td>Frenzied Scimitar</td>
+      <td>1.56</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Ithergue48</td>
+      <td>24</td>
+      <td>Male</td>
+      <td>92</td>
+      <td>Final Critic</td>
+      <td>4.88</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Chamassasya86</td>
+      <td>24</td>
+      <td>Male</td>
+      <td>100</td>
+      <td>Blindscythe</td>
+      <td>3.27</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Iskosia90</td>
+      <td>23</td>
+      <td>Male</td>
+      <td>131</td>
+      <td>Fury</td>
+      <td>1.44</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Player Count
+
+* Display the total number of players
+
+
+```python
 total_players = purchase_data_df["SN"].count()
 total_players
+```
 
-780
 
-Purchasing Analysis (Total)
 
-Run basic calculations to obtain number of unique items, average price, etc.
-Create a summary data frame to hold the results
-Optional: give the displayed data cleaner formatting
-Display the summary data frame
 
+    780
+
+
+
+## Purchasing Analysis (Total)
+
+* Run basic calculations to obtain number of unique items, average price, etc.
+
+
+* Create a summary data frame to hold the results
+
+
+* Optional: give the displayed data cleaner formatting
+
+
+* Display the summary data frame
+
+
+
+```python
 unique_items = len(purchase_data_df["Item ID"].unique())
 unique_items
 
@@ -108,23 +172,66 @@ purchase_analysis_df
 # reorganazing the column order for summary dataframe
 org_purchase_analysis_df = purchase_analysis_df[["Number of Unique Items","Average Price","Number of Purchases", "Total Revenue" ]]
 org_purchase_analysis_df
-Out[3]:
 
-Number of Unique Items
-Average Price
-Number of Purchases
-Total Revenue
-0
-183
-$3.05</td> <td>780</td> <td>$2,379.77
+```
 
-Gender Demographics
 
-Run basic calculations to obtain number of unique items, average price, etc.
-Create a summary data frame to hold the results
-Optional: give the displayed data cleaner formatting
-Display the summary data frame
-In [4]:
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Number of Unique Items</th>
+      <th>Average Price</th>
+      <th>Number of Purchases</th>
+      <th>Total Revenue</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>183</td>
+      <td>$3.05</td>
+      <td>780</td>
+      <td>$2,379.77</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Gender Demographics
+
+* Run basic calculations to obtain number of unique items, average price, etc.
+
+
+* Create a summary data frame to hold the results
+
+
+* Optional: give the displayed data cleaner formatting
+
+
+* Display the summary data frame
+
+
+
+```python
 # The value counts method counts unique values in a column, then dataframe created to hold results
 gender_demo_df = pd.DataFrame(purchase_data_df["Gender"].value_counts())
 gender_demo_df
@@ -144,28 +251,75 @@ org_gender_demo_df
 # Rename the column "Gender" to "Total Counts" using .rename(columns={})
 fin_gender_demo_df = org_gender_demo_df.rename(columns={"Gender":"Total Count"})
 fin_gender_demo_df
-Out[4]:
 
-Percentage of Players
-Total Count
-Male
-83.59%
-652
-Female
-14.49%
-113
-Other / Non-Disclosed
-1.92%
-15
+```
 
-Purchasing Analysis (Gender)
 
-Run basic calculations to obtain purchase count, avg. purchase price, etc. by gender
-For normalized purchasing, divide total purchase value by purchase count, by gender
-Create a summary data frame to hold the results
-Optional: give the displayed data cleaner formatting
-Display the summary data frame
-In [5]:
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Percentage of Players</th>
+      <th>Total Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Male</th>
+      <td>83.59%</td>
+      <td>652</td>
+    </tr>
+    <tr>
+      <th>Female</th>
+      <td>14.49%</td>
+      <td>113</td>
+    </tr>
+    <tr>
+      <th>Other / Non-Disclosed</th>
+      <td>1.92%</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+## Purchasing Analysis (Gender)
+
+* Run basic calculations to obtain purchase count, avg. purchase price, etc. by gender
+
+
+* For normalized purchasing, divide total purchase value by purchase count, by gender
+
+
+* Create a summary data frame to hold the results
+
+
+* Optional: give the displayed data cleaner formatting
+
+
+* Display the summary data frame
+
+
+```python
 # Using GroupBy in order to separate the data into fields according to "Gender" values
 gender_grouped_purchased_data_df = purchase_data_df.groupby(["Gender"])
 
@@ -202,36 +356,93 @@ org_gender_purchased_data_df
 # Summary purchasing analysis DF grouped by gender, rename "Purchase ID" column, using .rename(columns={})
 summary_gender_purchased_data_df = org_gender_purchased_data_df.rename(columns={"Purchase ID":"Purchase Count"})
 summary_gender_purchased_data_df
-Out[5]:
 
-Purchase Count
-Average Purchase Price
-Total Purchase Value
-Normalized Totals
-Gender
+```
 
 
 
 
-Female
-113
-$3.20
-$361.94</td> <td>$3.20
-Male
-652
-$3.02</td> <td>$1,967.64
-$3.02</td> </tr> <tr> <th>Other / Non-Disclosed</th> <td>15</td> <td>$3.35
-$50.19</td> <td>$3.35
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-Age Demographics
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-Establish bins for ages
-Categorize the existing players using the age bins. Hint: use pd.cut()
-Calculate the numbers and percentages by age group
-Create a summary data frame to hold the results
-Optional: round the percentage column to two decimal points
-Display Age Demographics Table
-In [7]:
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Average Purchase Price</th>
+      <th>Total Purchase Value</th>
+      <th>Normalized Totals</th>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Female</th>
+      <td>113</td>
+      <td>$3.20</td>
+      <td>$361.94</td>
+      <td>$3.20</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>652</td>
+      <td>$3.02</td>
+      <td>$1,967.64</td>
+      <td>$3.02</td>
+    </tr>
+    <tr>
+      <th>Other / Non-Disclosed</th>
+      <td>15</td>
+      <td>$3.35</td>
+      <td>$50.19</td>
+      <td>$3.35</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Age Demographics
+
+* Establish bins for ages
+
+
+* Categorize the existing players using the age bins. Hint: use pd.cut()
+
+
+* Calculate the numbers and percentages by age group
+
+
+* Create a summary data frame to hold the results
+
+
+* Optional: round the percentage column to two decimal points
+
+
+* Display Age Demographics Table
+
+
+
+```python
 # Create the bins in which Purchse Data will be held
 # Bins are 0, 9.90, 14.90, 19.90, 24.90, 29.90, 34.90, 39.90, 99999
 # Establish bins for ages
@@ -267,47 +478,107 @@ org_summary_by_age_df
 # Rename the columns for the final age dempgraphic df using .rename(columns={})
 fin_grp_by_age_summary_df = org_summary_by_age_df.rename(columns={"Purchase ID":"Percentage of Players", "SN":"Total Count"})
 fin_grp_by_age_summary_df
-Out[7]:
 
-Percentage of Players
-Total Count
-Age Summary
+```
 
 
-<10
-2.95%
-23
-10-14
-3.59%
-28
-15-19
-17.44%
-136
-20-24
-46.79%
-365
-25-29
-12.95%
-101
-30-34
-9.36%
-73
-35-39
-5.26%
-41
-40+
-1.67%
-13
 
-Purchasing Analysis (Age)
 
-Bin the purchase_data data frame by age
-Run basic calculations to obtain purchase count, avg. purchase price, etc. in the table below
-Calculate Normalized Purchasing
-Create a summary data frame to hold the results
-Optional: give the displayed data cleaner formatting
-Display the summary data frame
-In [8]:
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Percentage of Players</th>
+      <th>Total Count</th>
+    </tr>
+    <tr>
+      <th>Age Summary</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;10</th>
+      <td>2.95%</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>10-14</th>
+      <td>3.59%</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>15-19</th>
+      <td>17.44%</td>
+      <td>136</td>
+    </tr>
+    <tr>
+      <th>20-24</th>
+      <td>46.79%</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <th>25-29</th>
+      <td>12.95%</td>
+      <td>101</td>
+    </tr>
+    <tr>
+      <th>30-34</th>
+      <td>9.36%</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>35-39</th>
+      <td>5.26%</td>
+      <td>41</td>
+    </tr>
+    <tr>
+      <th>40+</th>
+      <td>1.67%</td>
+      <td>13</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Purchasing Analysis (Age)
+
+* Bin the purchase_data data frame by age
+
+
+* Run basic calculations to obtain purchase count, avg. purchase price, etc. in the table below
+
+
+* Calculate Normalized Purchasing
+
+
+* Create a summary data frame to hold the results
+
+
+* Optional: give the displayed data cleaner formatting
+
+
+* Display the summary data frame
+
+
+```python
 # Let's work with data sorted by age new dataframe
 analysis_by_age_df = pd.DataFrame(grp_by_age_purchase_data_df["Purchase ID"].count())
 analysis_by_age_df
@@ -338,49 +609,126 @@ analysis_by_age_df
 # Summary purchasing analysis DF grouped by age, rename "Purchase ID" column, using .rename(columns={})summary_gender_purchased_data_df = org_gender_purchased_data_df.rename(columns={"Purchase ID":"Purchase Count"})
 summary_age_purchased_data_df = analysis_by_age_df.rename(columns={"Purchase ID":"Purchase Count"})
 summary_age_purchased_data_df
-Out[8]:
 
-Purchase Count
-Average Purchase Price
-Total Purchase Value
-Normalized Totals
-Age Summary
+```
 
 
 
 
-<10
-23
-$3.35
-$77.13</td> <td>$3.35
-10-14
-28
-$2.96</td> <td>$82.78
-$2.96</td> </tr> <tr> <th>15-19</th> <td>136</td> <td>$3.04
-$412.89</td> <td>$3.04
-20-24
-365
-$3.05</td> <td>$1,114.06
-$3.05</td> </tr> <tr> <th>25-29</th> <td>101</td> <td>$2.90
-$293.00</td> <td>$2.90
-30-34
-73
-$2.93</td> <td>$214.00
-$2.93</td> </tr> <tr> <th>35-39</th> <td>41</td> <td>$3.60
-$147.67</td> <td>$3.60
-40+
-13
-$2.94</td> <td>$38.24
-$2.94
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-Top Spenders
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-Run basic calculations to obtain the results in the table below
-Create a summary data frame to hold the results
-Sort the total purchase value column in descending order
-Optional: give the displayed data cleaner formatting
-Display a preview of the summary data frame
-In [9]:
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Average Purchase Price</th>
+      <th>Total Purchase Value</th>
+      <th>Normalized Totals</th>
+    </tr>
+    <tr>
+      <th>Age Summary</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;10</th>
+      <td>23</td>
+      <td>$3.35</td>
+      <td>$77.13</td>
+      <td>$3.35</td>
+    </tr>
+    <tr>
+      <th>10-14</th>
+      <td>28</td>
+      <td>$2.96</td>
+      <td>$82.78</td>
+      <td>$2.96</td>
+    </tr>
+    <tr>
+      <th>15-19</th>
+      <td>136</td>
+      <td>$3.04</td>
+      <td>$412.89</td>
+      <td>$3.04</td>
+    </tr>
+    <tr>
+      <th>20-24</th>
+      <td>365</td>
+      <td>$3.05</td>
+      <td>$1,114.06</td>
+      <td>$3.05</td>
+    </tr>
+    <tr>
+      <th>25-29</th>
+      <td>101</td>
+      <td>$2.90</td>
+      <td>$293.00</td>
+      <td>$2.90</td>
+    </tr>
+    <tr>
+      <th>30-34</th>
+      <td>73</td>
+      <td>$2.93</td>
+      <td>$214.00</td>
+      <td>$2.93</td>
+    </tr>
+    <tr>
+      <th>35-39</th>
+      <td>41</td>
+      <td>$3.60</td>
+      <td>$147.67</td>
+      <td>$3.60</td>
+    </tr>
+    <tr>
+      <th>40+</th>
+      <td>13</td>
+      <td>$2.94</td>
+      <td>$38.24</td>
+      <td>$2.94</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Top Spenders
+
+* Run basic calculations to obtain the results in the table below
+
+
+* Create a summary data frame to hold the results
+
+
+* Sort the total purchase value column in descending order
+
+
+* Optional: give the displayed data cleaner formatting
+
+
+* Display a preview of the summary data frame
+
+
+
+
+```python
 # Let's work with original purchase data grouped by player("SN") 
 orig_purchase_data_df = pd.DataFrame(purchase_data)
 orig_purchase_data_df.head()
@@ -417,33 +765,101 @@ TOP5_spendors_df.head()
 dlr_total_purchase_value_SN = total_purchase_value_SN.map("${:,.2f}".format)
 TOP5_spendors_df["Total Purchase Value"] = dlr_total_purchase_value_SN
 TOP5_spendors_df.head()
-Out[9]:
 
-Purchase Count
-Average Purchase Price
-Total Purchase Value
-SN
+```
 
 
 
-Lisosia93
-5
-$3.79
-$18.96</td> </tr> <tr> <th>Idastidru52</th> <td>4</td> <td>$3.86
-$15.45</td> </tr> <tr> <th>Chamjask73</th> <td>3</td> <td>$4.61
-$13.83</td> </tr> <tr> <th>Iral74</th> <td>4</td> <td>$3.40
-$13.62</td> </tr> <tr> <th>Iskadarya95</th> <td>3</td> <td>$4.37
-$13.10
 
-Most Popular Items
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-Retrieve the Item ID, Item Name, and Item Price columns
-Group by Item ID and Item Name. Perform calculations to obtain purchase count, item price, and total purchase value
-Create a summary data frame to hold the results
-Sort the purchase count column in descending order
-Optional: give the displayed data cleaner formatting
-Display a preview of the summary data frame
-In [10]:
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Average Purchase Price</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>SN</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Lisosia93</th>
+      <td>5</td>
+      <td>$3.79</td>
+      <td>$18.96</td>
+    </tr>
+    <tr>
+      <th>Idastidru52</th>
+      <td>4</td>
+      <td>$3.86</td>
+      <td>$15.45</td>
+    </tr>
+    <tr>
+      <th>Chamjask73</th>
+      <td>3</td>
+      <td>$4.61</td>
+      <td>$13.83</td>
+    </tr>
+    <tr>
+      <th>Iral74</th>
+      <td>4</td>
+      <td>$3.40</td>
+      <td>$13.62</td>
+    </tr>
+    <tr>
+      <th>Iskadarya95</th>
+      <td>3</td>
+      <td>$4.37</td>
+      <td>$13.10</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Most Popular Items
+
+* Retrieve the Item ID, Item Name, and Item Price columns
+
+
+* Group by Item ID and Item Name. Perform calculations to obtain purchase count, item price, and total purchase value
+
+
+* Create a summary data frame to hold the results
+
+
+* Sort the purchase count column in descending order
+
+
+* Optional: give the displayed data cleaner formatting
+
+
+* Display a preview of the summary data frame
+
+
+
+
+```python
 # Let's work again with original purchase data grouped by "Item ID" and "Item Name"
 
 # Group by Item ( "Item ID" and "Item Name" )
@@ -475,33 +891,99 @@ analysis_by_ITEM_df
 SUM_ITEM_purchased_data_df = analysis_by_ITEM_df.rename(columns={"Purchase ID":"Purchase Count"})
 TOP5_ITEMS_df=SUM_ITEM_purchased_data_df.sort_values("Purchase Count", ascending=False)
 TOP5_ITEMS_df.head()
-Out[10]:
 
-
-Purchase Count
-Item Price
-Total Purchase Value
-Item ID
-Item Name
+```
 
 
 
-178
-Oathbreaker, Last Hope of the Breaking Storm
-12
-$4.23
-$50.76</td> </tr> <tr> <th>145</th> <th>Fiery Glass Crusader</th> <td>9</td> <td>$4.58
-$41.22</td> </tr> <tr> <th>108</th> <th>Extraction, Quickblade Of Trembling Hands</th> <td>9</td> <td>$3.53
-$31.77</td> </tr> <tr> <th>82</th> <th>Nirvana</th> <td>9</td> <td>$4.90
-$44.10</td> </tr> <tr> <th>19</th> <th>Pursuit, Cudgel of Necromancy</th> <td>8</td> <td>$1.02
-$8.16
 
-Most Profitable Items
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-Sort the above table by total purchase value in descending order
-Optional: give the displayed data cleaner formatting
-Display a preview of the data frame
-In [11]:
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Item Price</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>178</th>
+      <th>Oathbreaker, Last Hope of the Breaking Storm</th>
+      <td>12</td>
+      <td>$4.23</td>
+      <td>$50.76</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <th>Fiery Glass Crusader</th>
+      <td>9</td>
+      <td>$4.58</td>
+      <td>$41.22</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <th>Extraction, Quickblade Of Trembling Hands</th>
+      <td>9</td>
+      <td>$3.53</td>
+      <td>$31.77</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <th>Nirvana</th>
+      <td>9</td>
+      <td>$4.90</td>
+      <td>$44.10</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <th>Pursuit, Cudgel of Necromancy</th>
+      <td>8</td>
+      <td>$1.02</td>
+      <td>$8.16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Most Profitable Items
+
+* Sort the above table by total purchase value in descending order
+
+
+* Optional: give the displayed data cleaner formatting
+
+
+* Display a preview of the data frame
+
+
+
+
+```python
 # Alter analysis by Item_df to have total purchase price column in numeric form to be able to sort it numerically
 SUM_ITEM_purchased_data_df["Total Purchase Value"] = grp_top_item_df["Price"].sum()
 SUM_ITEM_purchased_data_df
@@ -513,41 +995,97 @@ TOP5_ITEMS_df=SUM_ITEM_purchased_data_df.sort_values("Total Purchase Value", asc
 dlr_total_purchase_value_ITEM = total_purchase_value_ITEM.map("${:,.2f}".format)
 TOP5_ITEMS_df["Total Purchase Value"] = dlr_total_purchase_value_ITEM
 TOP5_ITEMS_df.head()
-Out[11]:
 
-
-Purchase Count
-Item Price
-Total Purchase Value
-Item ID
-Item Name
+```
 
 
 
-178
-Oathbreaker, Last Hope of the Breaking Storm
-12
-$4.23</td> <td>$50.76
-82
-Nirvana
-9
-$4.90</td> <td>$44.10
-145
-Fiery Glass Crusader
-9
-$4.58</td> <td>$41.22
-92
-Final Critic
-8
-$4.88</td> <td>$39.04
-103
-Singed Scalpel
-8
-$4.35</td> <td>$34.80
 
-Conclusions:
-Of the 780 active players, the vast majority are male (84%). There also exists, a smaller, but notable proportion of female layers (14%).
-Our peak age demographic falls between 20-24 (46.8%) with secondary groups falling between 15-19 (17.4%) and 25-29 (13%).
-The majority of purchases are also done by the age group 20-24 (46.8%) with secondary groups falling between 15-19 (17.4%) and 25-29 (13%).
-Out of 183 items offered, the most popular and profitable ones are "Oathbreaker, Last Hope of the Breaking Storm" (12 buys), brought $51 and "Nirvana" and "Fiery Glass Crusader" having (9 buys) each and brought $44 and $41 respectively. Generally, all players (780) prefer different items, there are no significantly more popular item(s) than others.
-Average purchase is about $3 per person with the top spenders paying up to $19 for their purchases. Still, 97% are paying way under $10. The total profit from the sold items is about $2400 for 780 players.
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Purchase Count</th>
+      <th>Item Price</th>
+      <th>Total Purchase Value</th>
+    </tr>
+    <tr>
+      <th>Item ID</th>
+      <th>Item Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>178</th>
+      <th>Oathbreaker, Last Hope of the Breaking Storm</th>
+      <td>12</td>
+      <td>$4.23</td>
+      <td>$50.76</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <th>Nirvana</th>
+      <td>9</td>
+      <td>$4.90</td>
+      <td>$44.10</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <th>Fiery Glass Crusader</th>
+      <td>9</td>
+      <td>$4.58</td>
+      <td>$41.22</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <th>Final Critic</th>
+      <td>8</td>
+      <td>$4.88</td>
+      <td>$39.04</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <th>Singed Scalpel</th>
+      <td>8</td>
+      <td>$4.35</td>
+      <td>$34.80</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+# Conclusions: 
+
+* Of the 780 active players, the vast majority are male (84%). There also exists, a smaller, but notable proportion of female     layers (14%).
+
+* Our peak age demographic falls between 20-24 (46.8%) with secondary groups falling between 15-19 (17.4%) and 25-29 (13%).
+
+* The majority of purchases are also done by the age group 20-24 (46.8%) with secondary groups falling between 15-19 (17.4%) and   25-29 (13%).  
+
+* Out of 183 items offered, the most popular and profitable ones are "Oathbreaker, Last Hope of the Breaking Storm" (12 buys), 
+  brought $51 and "Nirvana" and "Fiery Glass Crusader" having (9 buys) each and brought $44 and $41 respectively. 
+  Generally, all players (780) prefer different items, there are no significantly more popular item(s) than others.
+
+* Average purchase is about $3 per person with the top spenders paying up to $19 for their purchases. Still, 97% are paying way   under $10. The total profit from the sold items is about $2400 for 780 players.
+
